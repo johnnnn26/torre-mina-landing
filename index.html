@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Residencia Torre Mina – Habitaciones modernas con baño privado y todo incluido en San Martín de Porres, cerca de Plaza Norte, Lima. Desde S/ 350/mes." />
+  <meta name="keywords" content="habitaciones alquiler Lima, cuartos San Martín de Porres, habitacion plaza norte, alquiler mensual lima" />
+  <meta property="og:title" content="Residencia Torre Mina | Habitaciones Todo Incluido – Plaza Norte, Lima" />
+  <meta property="og:description" content="Habitaciones modernas con baño privado, WiFi, agua, luz y limpieza incluidos. Edificio nuevo cerca de Plaza Norte." />
+  <meta property="og:type" content="website" />
+  <title>Residencia Torre Mina | Habitaciones Todo Incluido – Plaza Norte, Lima</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="#inicio" class="nav-logo">
+        <div class="logo-mark">TM</div>
+        <div class="logo-text">
+          <span class="logo-primary">Torre Mina</span>
+          <span class="logo-secondary">Plaza Norte · Lima</span>
+        </div>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="#habitaciones">Habitaciones</a>
+        <a href="#beneficios">Beneficios</a>
+        <a href="#ubicacion">Ubicación</a>
+        <a href="#como-funciona">Cómo funciona</a>
+        <a href="https://wa.me/51933589691?text=Hola%20estoy%20interesado%20en%20una%20habitaci%C3%B3n"
+           class="btn btn-nav" target="_blank" rel="noopener">
+          Consultar ahora
+        </a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero" id="inicio">
+    <!-- Background image with overlay -->
+    <div class="hero-bg">
+      <img
+        src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=1600&q=85&auto=format&fit=crop"
+        alt=""
+        aria-hidden="true"
+        class="hero-bg-img"
+      />
+      <div class="hero-overlay"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="hero-body">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="badge-dot"></span>
+            Edificio nuevo · San Martín de Porres, Lima
+          </div>
+          <h1 class="hero-title">
+            Vive bien,<br />
+            <span class="hero-accent">sin pagar de más.</span>
+          </h1>
+          <p class="hero-subtitle">
+            Habitaciones modernas con baño privado, WiFi, agua, luz y limpieza incluidos.
+            Todo listo desde el primer día.
+          </p>
+
+          <div class="hero-pills">
+            <span class="pill">✓ Baño privado</span>
+            <span class="pill">✓ Todo incluido</span>
+            <span class="pill">✓ Edificio nuevo</span>
+            <span class="pill">✓ Contrato formal</span>
+          </div>
+
+          <div class="hero-cta">
+            <a href="#habitaciones" class="btn btn-white btn-lg">
+              Ver habitaciones
+            </a>
+            <a
+              href="https://wa.me/51933589691?text=Hola%20estoy%20interesado%20en%20una%20habitaci%C3%B3n"
+              class="btn btn-wa btn-lg" target="_blank" rel="noopener"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Contactar por WhatsApp
+            </a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat">
+              <span class="stat-number">12</span>
+              <span class="stat-label">Habitaciones</span>
+            </div>
+            <div class="stat-sep"></div>
+            <div class="stat">
+              <span class="stat-number">3</span>
+              <span class="stat-label">Pisos</span>
+            </div>
+            <div class="stat-sep"></div>
+            <div class="stat">
+              <span class="stat-number">100%</span>
+              <span class="stat-label">Baño privado</span>
+            </div>
+            <div class="stat-sep"></div>
+            <div class="stat">
+              <span class="stat-number">S/500</span>
+              <span class="stat-label">Desde /mes</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="hero-scroll-hint" aria-hidden="true">
+      <span></span>
+    </div>
+  </section>
+
+  <!-- ===================== TRUST STRIP ===================== -->
+  <section class="trust-strip">
+    <div class="container">
+      <div class="trust-grid">
+        <div class="trust-item" data-animate>
+          <div class="trust-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <div>
+            <strong>Nuevo edificio</strong>
+            <span>Construcción moderna, acabados de calidad</span>
+          </div>
+        </div>
+        <div class="trust-divider" aria-hidden="true"></div>
+        <div class="trust-item" data-animate>
+          <div class="trust-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div>
+            <strong>Ambiente tranquilo</strong>
+            <span>Privacidad total, vecinos respetuosos</span>
+          </div>
+        </div>
+        <div class="trust-divider" aria-hidden="true"></div>
+        <div class="trust-item" data-animate>
+          <div class="trust-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <div>
+            <strong>Todo incluido</strong>
+            <span>Agua, luz, WiFi y limpieza sin costo extra</span>
+          </div>
+        </div>
+        <div class="trust-divider" aria-hidden="true"></div>
+        <div class="trust-item" data-animate>
+          <div class="trust-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <div>
+            <strong>Ubicación estratégica</strong>
+            <span>A minutos de Plaza Norte y transporte</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== HABITACIONES ===================== -->
+  <section class="section rooms-section" id="habitaciones">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Opciones disponibles</span>
+        <h2 class="section-title">Elige la habitación que se adapte a ti</h2>
+        <p class="section-sub">Todas incluyen baño privado y servicios completos. Sin costos ocultos, sin sorpresas.</p>
+      </div>
+
+      <div class="rooms-grid">
+
+        <!-- Económica -->
+        <div class="room-card" data-animate>
+          <div class="room-img-wrap">
+            <img
+              src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=700&q=80&auto=format&fit=crop"
+              alt="Habitación Económica" loading="lazy" width="700" height="525"
+            />
+            <span class="img-ref">Imagen referencial</span>
+            <span class="room-tag tag-eco">Económica</span>
+          </div>
+          <div class="room-body">
+            <div class="room-price">
+              <span class="price-num">S/ 500</span>
+              <span class="price-mo">/mes</span>
+            </div>
+            <h3 class="room-name">Habitación Económica</h3>
+            <p class="room-desc">Todo lo esencial para vivir bien sin gastar de más. Ideal para quien busca optimizar su presupuesto.</p>
+            <ul class="room-perks">
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 4.97-4.03 9-9 9S3 16.97 3 12 7.03 3 12 3s9 4.03 9 9z"/></svg>
+                Baño privado
+              </li>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+                WiFi de alta velocidad
+              </li>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                Luz y agua incluidos
+              </li>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                Limpieza incluida
+              </li>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                Máx. 2 personas
+              </li>
+            </ul>
+            <a
+              href="https://wa.me/51933589691?text=Hola%20estoy%20interesado%20en%20una%20habitaci%C3%B3n"
+              class="btn-room" target="_blank" rel="noopener"
+            >Consultar disponibilidad</a>
+          </div>
+        </div>
+
+        <!-- Estándar (featured) -->
+        <div class="room-card room-card--featured" data-animate>
+          <div class="room-popular">⭐ Más popular</div>
+          <div class="room-img-wrap">
+            <img
+              src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=700&q=80&auto=format&fit=crop"
+              alt="Habitación Estándar" loading="lazy" width="700" height="525"
+            />
+            <span class="img-ref">Imagen referencial</span>
+            <span class="room-tag tag-std">Estándar</span>
+          </div>
+          <div class="room-body">
+            <div class="room-price">
+              <span class="price-num">S/ 650</span>
+              <span class="price-mo">/mes</span>
+            </div>
+            <h3 class="room-name">Habitación Estándar</h3>
+            <p class="room-desc">El equilibrio perfecto entre precio y confort. Espacio bien diseñado para vivir, estudiar y descansar.</p>
+            <ul class="room-perks">
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 4.97-4.03 9-9 9S3 16.97 3 12 7.03 3 12 3s9 4.03 9 9z"/></svg>
+                Baño privado
+              </li>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+                WiFi de alta velocidad
+              </li>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                Luz y agua incluidos
+              </li>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                Limpieza incluida
+              </li>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                Máx. 2 personas
+              </li>
+            </ul>
+            <a
+              href="https://wa.me/51933589691?text=Hola%20estoy%20interesado%20en%20una%20habitaci%C3%B3n"
+              class="btn-room btn-room--featured" target="_blank" rel="noopener"
+            >Consultar disponibilidad</a>
+          </div>
+        </div>
+
+        <!-- Premium -->
+        <div class="room-card" data-animate>
+          <div class="room-img-wrap">
+            <img
+              src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=700&q=80&auto=format&fit=crop"
+              alt="Habitación Premium" loading="lazy" width="700" height="525"
+            />
+            <span class="img-ref">Imagen referencial</span>
+            <span class="room-tag tag-prem">Premium</span>
+          </div>
+          <div class="room-body">
+            <div class="room-price">
+              <span class="price-num">S/ 750</span>
+              <span class="price-mo">/mes</span>
+            </div>
+            <h3 class="room-name">Habitación Premium</h3>
+            <p class="room-desc">Más espacio, mejores acabados y mayor confort. Para quienes no quieren sacrificar bienestar por precio.</p>
+            <ul class="room-perks">
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 4.97-4.03 9-9 9S3 16.97 3 12 7.03 3 12 3s9 4.03 9 9z"/></svg>
+                Baño privado premium
+              </li>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+                WiFi de alta velocidad
+              </li>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                Luz y agua incluidos
+              </li>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                Limpieza incluida
+              </li>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                Mayor amplitud y confort
+              </li>
+            </ul>
+            <a
+              href="https://wa.me/51933589691?text=Hola%20estoy%20interesado%20en%20una%20habitaci%C3%B3n"
+              class="btn-room" target="_blank" rel="noopener"
+            >Consultar disponibilidad</a>
+          </div>
+        </div>
+
+      </div><!-- /rooms-grid -->
+
+      <!-- Conditions bar -->
+      <div class="conditions-bar">
+        <div class="condition">
+          <span class="cond-icon">📋</span>
+          <div><strong>Contrato mínimo</strong><span>6 meses</span></div>
+        </div>
+        <div class="cond-sep"></div>
+        <div class="condition">
+          <span class="cond-icon">🔐</span>
+          <div><strong>Garantía</strong><span>1 mes de depósito</span></div>
+        </div>
+        <div class="cond-sep"></div>
+        <div class="condition">
+          <span class="cond-icon">👥</span>
+          <div><strong>Capacidad</strong><span>Máx. 2 personas</span></div>
+        </div>
+        <div class="cond-sep"></div>
+        <div class="condition">
+          <span class="cond-icon">🏢</span>
+          <div><strong>Lavandería</strong><span>Área compartida</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== MINI APARTAMENTO ===================== -->
+  <section class="section apt-section" id="mini-apartamento">
+    <div class="container">
+      <div class="apt-card">
+        <div class="apt-img-col">
+          <img
+            src="https://images.unsplash.com/photo-1484154218962-a197022b5858?w=900&q=80&auto=format&fit=crop"
+            alt="Mini Apartamento Torre Mina – sala, cocina, 2 dormitorios"
+            loading="lazy" width="900" height="1100"
+          />
+          <span class="img-ref">Imagen referencial</span>
+          <div class="apt-ribbon">
+            <span>✦ PREMIUM</span>
+          </div>
+        </div>
+        <div class="apt-content">
+          <span class="section-tag">Máxima independencia</span>
+          <h2 class="apt-title">Tu propio espacio.<br/>Tu propia vida.</h2>
+          <p class="apt-desc">
+            Para quienes buscan algo más que una habitación. El mini apartamento ofrece la independencia real de un hogar completo: cocina propia, sala, dos dormitorios y baño privado.
+          </p>
+          <p class="apt-desc">
+            Ideal para parejas, compañeros de trabajo o cualquier persona que quiera vivir con total privacidad y autonomía.
+          </p>
+          <div class="apt-features">
+            <div class="apt-feat"><span>🛏️</span><span>2 dormitorios</span></div>
+            <div class="apt-feat"><span>🛋️</span><span>Sala de estar</span></div>
+            <div class="apt-feat"><span>🍳</span><span>Cocina propia</span></div>
+            <div class="apt-feat"><span>🚿</span><span>Baño privado</span></div>
+            <div class="apt-feat"><span>📶</span><span>WiFi incluido</span></div>
+            <div class="apt-feat"><span>💡</span><span>Servicios incluidos</span></div>
+          </div>
+          <div class="apt-price-row">
+            <div class="apt-price">
+              <span class="apt-from">desde</span>
+              <span class="apt-amt">S/ 1,500</span>
+              <span class="apt-mo">/mes</span>
+            </div>
+            <a
+              href="https://wa.me/51933589691?text=Hola%20estoy%20interesado%20en%20una%20habitaci%C3%B3n"
+              class="btn btn-accent btn-lg" target="_blank" rel="noopener"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Consultar por WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== BENEFICIOS ===================== -->
+  <section class="section benefits-section" id="beneficios">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Por qué elegirnos</span>
+        <h2 class="section-title">Vivir aquí es diferente</h2>
+        <p class="section-sub">Cada detalle fue pensado para tu tranquilidad, privacidad y comodidad del día a día.</p>
+      </div>
+      <div class="benefits-grid">
+        <div class="benefit-card" data-animate>
+          <div class="ben-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Privacidad garantizada</h3>
+          <p>Baño privado en cada habitación. Tu espacio es exclusivamente tuyo, sin compartir con extraños.</p>
+        </div>
+        <div class="benefit-card" data-animate>
+          <div class="ben-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <h3>Sin costos ocultos</h3>
+          <p>Agua, luz, WiFi y limpieza incluidos. Sabes exactamente cuánto pagas cada mes.</p>
+        </div>
+        <div class="benefit-card" data-animate>
+          <div class="ben-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <h3>Edificio nuevo</h3>
+          <p>Infraestructura moderna con acabados de calidad. Todo en perfecto estado desde el primer día.</p>
+        </div>
+        <div class="benefit-card" data-animate>
+          <div class="ben-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <h3>Ubicación estratégica</h3>
+          <p>A minutos de Plaza Norte, Metropolitano, Tren Línea 1 y todo lo esencial de Lima Norte.</p>
+        </div>
+        <div class="benefit-card" data-animate>
+          <div class="ben-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </div>
+          <h3>Contrato formal</h3>
+          <p>Todo por escrito. Sin sorpresas, sin letra pequeña. Proceso simple y transparente desde el inicio.</p>
+        </div>
+        <div class="benefit-card" data-animate>
+          <div class="ben-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <h3>Atención directa</h3>
+          <p>Hablas con los propietarios directamente por WhatsApp. Sin intermediarios, respuesta rápida.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== UBICACIÓN ===================== -->
+  <section class="section location-section" id="ubicacion">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Dónde estamos</span>
+        <h2 class="section-title">En el corazón de Lima Norte</h2>
+        <p class="section-sub">Vivir cerca de Plaza Norte significa tener todo a tu alcance: transporte, comercio y entretenimiento.</p>
+      </div>
+      <div class="location-grid">
+        <div class="nearby-col">
+          <h3 class="nearby-title">A minutos de la residencia</h3>
+          <div class="nearby-list">
+            <div class="nearby-item">
+              <span class="nearby-icon">🛒</span>
+              <div><strong>Plaza Norte</strong><span>Centro comercial, Wong, cines, restaurantes</span></div>
+            </div>
+            <div class="nearby-item">
+              <span class="nearby-icon">🚌</span>
+              <div><strong>Transporte público</strong><span>Metropolitano, Tren Línea 1, combis a toda Lima</span></div>
+            </div>
+            <div class="nearby-item">
+              <span class="nearby-icon">🍽️</span>
+              <div><strong>Restaurantes y mercados</strong><span>Amplia variedad para comer bien a diario</span></div>
+            </div>
+            <div class="nearby-item">
+              <span class="nearby-icon">🏥</span>
+              <div><strong>Centros de salud</strong><span>Clínicas, farmacias y boticas en la zona</span></div>
+            </div>
+            <div class="nearby-item">
+              <span class="nearby-icon">🎓</span>
+              <div><strong>Institutos y universidades</strong><span>SENATI, institutos técnicos y acceso rápido</span></div>
+            </div>
+            <div class="nearby-item">
+              <span class="nearby-icon">🏦</span>
+              <div><strong>Bancos y cajeros</strong><span>BCP, Interbank, Scotiabank y más</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="map-col">
+          <div class="map-wrap">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d487.2!2d-77.057928!3d-12.0087016!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2s!5e0!3m2!1ses!2spe!4v1713000000001!5m2!1ses!2spe"
+              width="100%"
+              height="420"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Ubicación Residencia Torre Mina – cerca de Plaza Norte"
+            ></iframe>
+          </div>
+          <p class="map-caption">📍 San Martín de Porres, Lima — cerca de Plaza Norte</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CÓMO FUNCIONA ===================== -->
+  <section class="section how-section" id="como-funciona">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Proceso simple</span>
+        <h2 class="section-title">¿Cómo empiezo a vivir aquí?</h2>
+        <p class="section-sub">Cuatro pasos para tener tu nueva habitación lista.</p>
+      </div>
+      <div class="steps-wrap">
+        <div class="step" data-animate>
+          <div class="step-num">01</div>
+          <div class="step-emoji">💬</div>
+          <h3>Escríbenos</h3>
+          <p>Contáctanos por WhatsApp. Respuesta rápida con disponibilidad y precios reales.</p>
+        </div>
+        <div class="step-arrow" aria-hidden="true">→</div>
+        <div class="step" data-animate>
+          <div class="step-num">02</div>
+          <div class="step-emoji">🏠</div>
+          <h3>Visita sin compromiso</h3>
+          <p>Agenda una visita para conocer el espacio en persona. Total transparencia.</p>
+        </div>
+        <div class="step-arrow" aria-hidden="true">→</div>
+        <div class="step" data-animate>
+          <div class="step-num">03</div>
+          <div class="step-emoji">📋</div>
+          <h3>Firma el contrato</h3>
+          <p>Contrato formal de 6 meses mínimo, 1 mes de garantía. Todo por escrito.</p>
+        </div>
+        <div class="step-arrow" aria-hidden="true">→</div>
+        <div class="step" data-animate>
+          <div class="step-num">04</div>
+          <div class="step-emoji">🗝️</div>
+          <h3>¡Entra a tu hogar!</h3>
+          <p>Recibe tus llaves y comienza a vivir. Todo listo, todo incluido.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CTA FINAL ===================== -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-inner">
+        <h2 class="cta-title">¿Listo para conocer tu nueva habitación?</h2>
+        <p class="cta-sub">Disponibilidad limitada. Escríbenos hoy y coordina una visita sin compromiso.</p>
+        <a
+          href="https://wa.me/51933589691?text=Hola%20estoy%20interesado%20en%20una%20habitaci%C3%B3n"
+          class="btn-cta-main" target="_blank" rel="noopener"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Consultar ahora por WhatsApp
+        </a>
+        <div class="cta-meta">
+          <span>📞 +51 933 589 691</span>
+          <span class="cta-hours">Disponibles todos los días · 8am – 9pm</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="logo-mark logo-mark--sm">TM</div>
+          <div class="logo-text">
+            <span class="logo-primary">Torre Mina</span>
+            <span class="logo-secondary">Plaza Norte · Lima</span>
+          </div>
+        </div>
+        <p>Residencia moderna en San Martín de Porres, Lima. Todo incluido para que solo te preocupes de vivir bien.</p>
+        <a href="https://wa.me/51933589691?text=Hola%20estoy%20interesado%20en%20una%20habitaci%C3%B3n" class="footer-wa-btn" target="_blank" rel="noopener">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          +51 933 589 691
+        </a>
+      </div>
+      <div class="footer-col">
+        <h4>Habitaciones</h4>
+        <ul>
+          <li><a href="#habitaciones">Económica – S/ 500/mes</a></li>
+          <li><a href="#habitaciones">Estándar – S/ 650/mes</a></li>
+          <li><a href="#habitaciones">Premium – S/ 750/mes</a></li>
+          <li><a href="#mini-apartamento">Mini Apartamento – desde S/ 1,500</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Información</h4>
+        <ul>
+          <li><a href="#beneficios">Servicios incluidos</a></li>
+          <li><a href="#ubicacion">Ubicación</a></li>
+          <li><a href="#como-funciona">Cómo funciona</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <p style="color:#888;font-size:.875rem;line-height:1.7;">
+          San Martín de Porres<br/>Lima, Perú<br/>Cerca de Plaza Norte
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>© 2024 Residencia Torre Mina. Todos los derechos reservados.</p>
+        <p>San Martín de Porres, Lima – Perú</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================== WHATSAPP FLOTANTE ===================== -->
+  <a
+    href="https://wa.me/51933589691?text=Hola%20estoy%20interesado%20en%20una%20habitaci%C3%B3n"
+    class="wa-float"
+    target="_blank"
+    rel="noopener"
+    aria-label="Contactar por WhatsApp"
+    id="waFloat"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span class="wa-tooltip">¿Tienes alguna pregunta?</span>
+  </a>
+
+  <script src="script.js"></script>
+</body>
+</html>
