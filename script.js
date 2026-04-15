@@ -20,7 +20,7 @@ window.addEventListener('scroll', () => {
 
 // Trigger hero image slow zoom-out on load
 window.addEventListener('load', () => {
-  hero?.classList.add('ready');
+  document.querySelector('.hero')?.classList.add('ready');
 });
 
 
