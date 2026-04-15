@@ -253,8 +253,8 @@ document.querySelectorAll('.faq-q').forEach(btn => {
     maxZoom: 19
   }).addTo(map);
 
-  // Force recalculate size after DOM is fully painted
-  setTimeout(() => map.invalidateSize(), 300);
+  setTimeout(() => map.invalidateSize(), 200);
+  window.addEventListener('load', () => map.invalidateSize());
 
   function makeIcon(color) {
     return L.divIcon({
