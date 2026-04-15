@@ -238,15 +238,23 @@ document.querySelectorAll('.faq-q').forEach(btn => {
    LEAFLET MAP – ENTORNO
 ----------------------------------------------- */
 (function () {
-  if (!document.getElementById('entornoMap')) return;
+  const mapEl = document.getElementById('entornoMap');
+  if (!mapEl) return;
 
-  const map = L.map('entornoMap', { zoomControl: true, scrollWheelZoom: false })
-    .setView([-12.0084, -77.0578], 15);
+  const map = L.map('entornoMap', {
+    zoomControl: true,
+    scrollWheelZoom: false,
+    tap: false
+  }).setView([-12.0084, -77.0578], 15);
 
   L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
     attribution: '&copy; <a href="https://carto.com/">CARTO</a>',
+    subdomains: 'abcd',
     maxZoom: 19
   }).addTo(map);
+
+  // Force recalculate size after DOM is fully painted
+  setTimeout(() => map.invalidateSize(), 300);
 
   function makeIcon(color) {
     return L.divIcon({
