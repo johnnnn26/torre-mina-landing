@@ -1344,6 +1344,88 @@ ul  { list-style: none; }
 
 
 /* ==============================================
+   ZONA / CROQUIS
+   ============================================== */
+.zona-section { background: var(--bg); }
+
+.croquis-wrap {
+  background: #f7f8fa;
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  box-shadow: var(--sh-md);
+  margin-bottom: 40px;
+}
+.croquis-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.zona-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.zona-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 20px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  box-shadow: var(--sh-xs);
+  transition: box-shadow var(--t);
+}
+.zona-card:hover { box-shadow: var(--sh-sm); }
+
+.zona-card-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--r-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.zona-card-body h4 {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-1);
+  margin-bottom: 10px;
+}
+.zona-card-body ul { display: flex; flex-direction: column; gap: 6px; }
+.zona-card-body li {
+  font-size: 0.8rem;
+  color: var(--text-2);
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  line-height: 1.4;
+}
+.zona-dist {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--accent);
+  background: var(--accent-lt);
+  padding: 1px 6px;
+  border-radius: 20px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+@media (max-width: 900px) {
+  .zona-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 520px) {
+  .zona-grid { grid-template-columns: 1fr; }
+  .zona-card { flex-direction: row; }
+}
+
+/* ==============================================
    BOOKING CALENDAR
    ============================================== */
 .booking-section { background: var(--bg-alt); }
