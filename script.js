@@ -74,19 +74,17 @@ const animObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (!entry.isIntersecting) return;
 
-    // Stagger siblings by 80ms
+    // Stagger via CSS --i custom property
     const siblings = Array.from(
       entry.target.parentElement.querySelectorAll('[data-animate]')
     );
     const idx = siblings.indexOf(entry.target);
-
-    setTimeout(() => {
-      entry.target.classList.add('in-view');
-    }, idx * 80);
+    entry.target.style.setProperty('--i', idx);
+    entry.target.classList.add('in-view');
 
     animObserver.unobserve(entry.target);
   });
-}, { threshold: 0.10, rootMargin: '0px 0px -36px 0px' });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
 document.querySelectorAll('[data-animate]').forEach(el => animObserver.observe(el));
 
