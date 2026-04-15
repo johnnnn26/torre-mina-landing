@@ -128,3 +128,88 @@ document.querySelectorAll('.room-card').forEach(card => {
     if (e.key === 'Enter') card.querySelector('a')?.click();
   });
 });
+
+
+/* -----------------------------------------------
+   BOOKING CALENDAR
+----------------------------------------------- */
+(function () {
+  const grid        = document.getElementById('calGrid');
+  const monthLabel  = document.getElementById('calMonthLabel');
+  const btnPrev     = document.getElementById('calPrev');
+  const btnNext     = document.getElementById('calNext');
+  if (!grid) return;
+
+  // Fake booked dates: [month(0-indexed), day]
+  const bookedDates = {
+    '2026-3':  [3, 8, 14, 22, 27],   // April 2026
+    '2026-4':  [5, 12, 19, 20, 26],  // May 2026
+    '2026-5':  [2, 9, 16, 23, 30],   // June 2026
+  };
+
+  const today = new Date();
+  let current = new Date(today.getFullYear(), today.getMonth(), 1);
+
+  function render() {
+    const year  = current.getFullYear();
+    const month = current.getMonth();
+    const key   = `${year}-${month}`;
+    const booked = bookedDates[key] || [];
+
+    monthLabel.textContent = current.toLocaleString('es-PE', { month: 'long', year: 'numeric' });
+
+    const firstDay = new Date(year, month, 1).getDay(); // 0=Sun
+    // Convert Sunday-first to Monday-first
+    const offset = firstDay === 0 ? 6 : firstDay - 1;
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+    grid.innerHTML = '';
+
+    // Empty cells before first day
+    for (let i = 0; i < offset; i++) {
+      const el = document.createElement('div');
+      el.className = 'cal-day empty';
+      grid.appendChild(el);
+    }
+
+    for (let d = 1; d <= daysInMonth; d++) {
+      const date    = new Date(year, month, d);
+      const isSun   = date.getDay() === 0;
+      const isPast  = date < new Date(today.getFullYear(), today.getMonth(), today.getDate());
+      const isToday = date.toDateString() === today.toDateString();
+      const isBooked = booked.includes(d);
+
+      const el = document.createElement('div');
+      el.textContent = d;
+
+      let cls = 'cal-day';
+      if (isSun)       cls += ' sunday past';
+      else if (isPast) cls += ' past';
+      else if (isBooked) cls += ' booked';
+      else             cls += ' free';
+
+      if (isToday) cls += ' today';
+      el.className = cls;
+
+      if (!isPast && !isSun && !isBooked) {
+        el.title = 'Disponible – haz clic para agendar';
+        el.addEventListener('click', () => {
+          window.open('https://calendly.com/johnn-academic/visita-a-torre-mina', '_blank');
+        });
+      }
+
+      grid.appendChild(el);
+    }
+  }
+
+  btnPrev.addEventListener('click', () => {
+    current.setMonth(current.getMonth() - 1);
+    render();
+  });
+  btnNext.addEventListener('click', () => {
+    current.setMonth(current.getMonth() + 1);
+    render();
+  });
+
+  render();
+})();
