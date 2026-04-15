@@ -31,6 +31,7 @@
         <a href="#beneficios">Beneficios</a>
         <a href="#ubicacion">Ubicación</a>
         <a href="#entorno">Entorno</a>
+        <a href="#faq">FAQ</a>
         <a href="#como-funciona">Cómo funciona</a>
         <a href="#agendar">Agendar visita</a>
         <a href="https://wa.me/51933589691?text=Hola%20estoy%20interesado%20en%20una%20habitaci%C3%B3n"
@@ -521,128 +522,145 @@
         <p class="section-sub">Lima Norte tiene todo lo que necesitas a minutos. Transporte, supermercados, gimnasios, universidades y más.</p>
       </div>
 
-      <!-- CROQUIS SVG -->
+      <!-- RADAR INFOGRAPHIC -->
       <div class="croquis-wrap">
-        <svg class="croquis-svg" viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" aria-label="Croquis del entorno de Torre Mina">
+        <svg class="croquis-svg" viewBox="0 0 700 440" xmlns="http://www.w3.org/2000/svg" aria-label="Mapa de proximidad Torre Mina">
 
-          <!-- Background -->
-          <rect width="640" height="400" fill="#f7f8fa" rx="16"/>
+          <!-- BG dark -->
+          <rect width="700" height="440" fill="#0d1b2a" rx="20"/>
+          <!-- Subtle grid -->
+          <line x1="350" y1="0" x2="350" y2="440" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+          <line x1="0" y1="220" x2="700" y2="220" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
 
-          <!-- Street fills -->
-          <!-- Panamericana Norte (vertical, right side) -->
-          <rect x="368" y="0" width="22" height="400" fill="#e2e8f0"/>
-          <!-- Av. Túpac Amaru (vertical, left) -->
-          <rect x="188" y="0" width="18" height="400" fill="#e2e8f0"/>
-          <!-- Av. Tomás Valle (horizontal, top) -->
-          <rect x="0" y="108" width="640" height="18" fill="#e2e8f0"/>
-          <!-- Av. Alfredo Mendiola (horizontal, bottom) -->
-          <rect x="0" y="288" width="640" height="18" fill="#e2e8f0"/>
+          <!-- Distance rings -->
+          <circle cx="350" cy="215" r="80"  fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="1.5" stroke-dasharray="6,4"/>
+          <circle cx="350" cy="215" r="145" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1.5" stroke-dasharray="6,4"/>
+          <circle cx="350" cy="215" r="195" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1.5" stroke-dasharray="6,4"/>
 
-          <!-- Street labels -->
-          <text x="379" y="55" font-size="9" fill="#94a3b8" font-family="Inter,sans-serif" font-weight="600" transform="rotate(90,379,55)">PANAMERICANA NORTE</text>
-          <text x="199" y="60" font-size="9" fill="#94a3b8" font-family="Inter,sans-serif" font-weight="600" transform="rotate(90,199,60)">AV. TÚPAC AMARU</text>
-          <text x="20" y="106" font-size="9" fill="#94a3b8" font-family="Inter,sans-serif" font-weight="600">AV. TOMÁS VALLE</text>
-          <text x="20" y="285" font-size="9" fill="#94a3b8" font-family="Inter,sans-serif" font-weight="600">AV. ALFREDO MENDIOLA</text>
+          <!-- Ring labels -->
+          <text x="432" y="212" font-size="9" fill="rgba(255,255,255,0.28)" font-family="Inter,sans-serif" font-weight="500">5 min</text>
+          <text x="497" y="212" font-size="9" fill="rgba(255,255,255,0.22)" font-family="Inter,sans-serif" font-weight="500">10 min</text>
+          <text x="547" y="212" font-size="9" fill="rgba(255,255,255,0.18)" font-family="Inter,sans-serif" font-weight="500">15 min</text>
 
-          <!-- Blocks (gray rectangles between streets) -->
-          <rect x="210" y="128" width="156" height="158" fill="#edf0f5" rx="6"/>
-          <rect x="392" y="128" width="180" height="158" fill="#edf0f5" rx="6"/>
-          <rect x="210" y="0" width="156" height="106" fill="#edf0f5" rx="6"/>
-          <rect x="392" y="0" width="180" height="106" fill="#edf0f5" rx="6"/>
-          <rect x="0" y="128" width="186" height="158" fill="#edf0f5" rx="6"/>
-          <rect x="0" y="0" width="186" height="106" fill="#edf0f5" rx="6"/>
-          <rect x="210" y="308" width="156" height="92" fill="#edf0f5" rx="6"/>
-          <rect x="392" y="308" width="180" height="92" fill="#edf0f5" rx="6"/>
-          <rect x="0" y="308" width="186" height="92" fill="#edf0f5" rx="6"/>
+          <!-- Connector lines POI → center -->
+          <line x1="350" y1="215" x2="407" y2="158" stroke="rgba(52,211,153,0.25)" stroke-width="1.2"/>
+          <line x1="350" y1="215" x2="353" y2="295" stroke="rgba(129,140,248,0.25)" stroke-width="1.2"/>
+          <line x1="350" y1="215" x2="214" y2="100" stroke="rgba(251,146,60,0.25)" stroke-width="1.2"/>
+          <line x1="350" y1="215" x2="162" y2="243" stroke="rgba(52,211,153,0.25)" stroke-width="1.2"/>
+          <line x1="350" y1="215" x2="397" y2="311" stroke="rgba(129,140,248,0.25)" stroke-width="1.2"/>
+          <line x1="350" y1="215" x2="257" y2="333" stroke="rgba(52,211,153,0.25)" stroke-width="1.2"/>
+          <line x1="350" y1="215" x2="233" y2="385" stroke="rgba(251,191,36,0.25)" stroke-width="1.2"/>
+          <line x1="350" y1="215" x2="209" y2="57"  stroke="rgba(52,211,153,0.25)" stroke-width="1.2"/>
 
-          <!-- ★ TORRE MINA (center) -->
-          <circle cx="310" cy="207" r="22" fill="#006D77"/>
-          <text x="310" y="212" text-anchor="middle" font-size="14" fill="white" font-family="Inter,sans-serif" font-weight="800">TM</text>
-          <text x="310" y="242" text-anchor="middle" font-size="10" fill="#006D77" font-family="Inter,sans-serif" font-weight="700">Torre Mina</text>
+          <!-- ——— TORRE MINA ——— -->
+          <circle cx="350" cy="215" r="28" fill="#006D77"/>
+          <circle cx="350" cy="215" r="36" fill="none" stroke="#006D77" stroke-width="2" opacity="0.4"/>
+          <text x="350" y="210" text-anchor="middle" font-size="10" fill="white" font-family="Inter,sans-serif" font-weight="800" letter-spacing="0.5">TORRE</text>
+          <text x="350" y="223" text-anchor="middle" font-size="10" fill="white" font-family="Inter,sans-serif" font-weight="800" letter-spacing="0.5">MINA</text>
 
-          <!-- POI: Plaza Norte 🛒 (top-right block) -->
-          <circle cx="470" cy="60" r="16" fill="#0ea5e9" opacity="0.9"/>
-          <text x="470" y="65" text-anchor="middle" font-size="13" fill="white" font-family="sans-serif">🛒</text>
-          <text x="470" y="88" text-anchor="middle" font-size="9" fill="#0369a1" font-family="Inter,sans-serif" font-weight="700">Plaza Norte</text>
-          <text x="470" y="99" text-anchor="middle" font-size="8" fill="#64748b" font-family="Inter,sans-serif">Wong · Cines · Comida</text>
+          <!-- ——— TRANSPORT (indigo #818cf8) ——— -->
+          <!-- Metropolitano Naranjal: S 178°, r=80 → (353, 295) -->
+          <circle cx="353" cy="295" r="14" fill="#4f46e5"/>
+          <rect x="347" y="289" width="12" height="8" rx="2" fill="white" opacity="0.9"/>
+          <rect x="349" y="299" width="3" height="3" rx="1" fill="white" opacity="0.7"/>
+          <rect x="354" y="299" width="3" height="3" rx="1" fill="white" opacity="0.7"/>
+          <text x="353" y="321" text-anchor="middle" font-size="9" fill="#a5b4fc" font-family="Inter,sans-serif" font-weight="700">Metropolitano</text>
+          <text x="353" y="332" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.45)" font-family="Inter,sans-serif">Est. Naranjal · 5 min</text>
 
-          <!-- POI: Metropolitano (bottom-right) -->
-          <circle cx="470" cy="348" r="16" fill="#7c3aed" opacity="0.9"/>
-          <text x="470" y="353" text-anchor="middle" font-size="13" fill="white" font-family="sans-serif">🚌</text>
-          <text x="470" y="376" text-anchor="middle" font-size="9" fill="#5b21b6" font-family="Inter,sans-serif" font-weight="700">Metropolitano</text>
-          <text x="470" y="387" text-anchor="middle" font-size="8" fill="#64748b" font-family="Inter,sans-serif">Est. Naranjal · 5 min</text>
+          <!-- Tren Línea 1: SE 148°, r=110 → (397, 311) -->
+          <circle cx="397" cy="311" r="14" fill="#4f46e5"/>
+          <rect x="390" y="305" width="14" height="9" rx="2" fill="white" opacity="0.9"/>
+          <circle cx="393" cy="316" r="2.5" fill="white" opacity="0.7"/>
+          <circle cx="401" cy="316" r="2.5" fill="white" opacity="0.7"/>
+          <text x="430" y="309" text-anchor="start" font-size="9" fill="#a5b4fc" font-family="Inter,sans-serif" font-weight="700">Tren Línea 1</text>
+          <text x="430" y="320" text-anchor="start" font-size="8" fill="rgba(255,255,255,0.45)" font-family="Inter,sans-serif">Independencia · 8 min</text>
 
-          <!-- POI: Smart Fit (top-left block) -->
-          <circle cx="95" cy="60" r="16" fill="#16a34a" opacity="0.9"/>
-          <text x="95" y="65" text-anchor="middle" font-size="13" fill="white" font-family="sans-serif">💪</text>
-          <text x="95" y="88" text-anchor="middle" font-size="9" fill="#15803d" font-family="Inter,sans-serif" font-weight="700">Smart Fit</text>
-          <text x="95" y="99" text-anchor="middle" font-size="8" fill="#64748b" font-family="Inter,sans-serif">Plaza Center SMP</text>
+          <!-- ——— SHOPPING (emerald #34d399) ——— -->
+          <!-- Plaza Norte + Metro: NE 48°, r=80 → (407, 158) -->
+          <circle cx="407" cy="158" r="14" fill="#059669"/>
+          <rect x="401" y="153" width="12" height="10" rx="2" fill="white" opacity="0.9"/>
+          <rect x="403" y="151" width="8" height="3" rx="1" fill="white" opacity="0.6"/>
+          <text x="425" y="153" text-anchor="start" font-size="9" fill="#6ee7b7" font-family="Inter,sans-serif" font-weight="700">Plaza Norte</text>
+          <text x="425" y="164" text-anchor="start" font-size="8" fill="rgba(255,255,255,0.45)" font-family="Inter,sans-serif">Metro · Cineplanet · 5 min</text>
 
-          <!-- POI: UNI (top, center-left) -->
-          <circle cx="260" cy="60" r="16" fill="#d97706" opacity="0.9"/>
-          <text x="260" y="65" text-anchor="middle" font-size="13" fill="white" font-family="sans-serif">🎓</text>
-          <text x="260" y="88" text-anchor="middle" font-size="9" fill="#92400e" font-family="Inter,sans-serif" font-weight="700">UNI</text>
-          <text x="260" y="99" text-anchor="middle" font-size="8" fill="#64748b" font-family="Inter,sans-serif">Univ. de Ingeniería</text>
+          <!-- Makro: W 257°, r=145 → (162, 243) -->
+          <circle cx="162" cy="243" r="14" fill="#059669"/>
+          <rect x="156" y="238" width="12" height="10" rx="2" fill="white" opacity="0.9"/>
+          <rect x="158" y="236" width="8" height="3" rx="1" fill="white" opacity="0.6"/>
+          <text x="52" y="238" text-anchor="start" font-size="9" fill="#6ee7b7" font-family="Inter,sans-serif" font-weight="700">Makro</text>
+          <text x="52" y="249" text-anchor="start" font-size="8" fill="rgba(255,255,255,0.45)" font-family="Inter,sans-serif">Mayorista · 10 min</text>
 
-          <!-- POI: Makro (bottom-left) -->
-          <circle cx="95" cy="348" r="16" fill="#dc2626" opacity="0.9"/>
-          <text x="95" y="353" text-anchor="middle" font-size="13" fill="white" font-family="sans-serif">🏪</text>
-          <text x="95" y="376" text-anchor="middle" font-size="9" fill="#991b1b" font-family="Inter,sans-serif" font-weight="700">Makro</text>
-          <text x="95" y="387" text-anchor="middle" font-size="8" fill="#64748b" font-family="Inter,sans-serif">Mayorista · 10 min</text>
+          <!-- PlazaVea: SW 214°, r=120 → (257, 333) -->
+          <circle cx="257" cy="333" r="14" fill="#059669"/>
+          <rect x="251" y="328" width="12" height="10" rx="2" fill="white" opacity="0.9"/>
+          <rect x="253" y="326" width="8" height="3" rx="1" fill="white" opacity="0.6"/>
+          <text x="257" y="358" text-anchor="middle" font-size="9" fill="#6ee7b7" font-family="Inter,sans-serif" font-weight="700">PlazaVea</text>
+          <text x="257" y="369" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.45)" font-family="Inter,sans-serif">Supermercado · 8 min</text>
 
-          <!-- POI: PlazaVea (bottom-center) -->
-          <circle cx="260" cy="348" r="16" fill="#dc2626" opacity="0.9"/>
-          <text x="260" y="353" text-anchor="middle" font-size="13" fill="white" font-family="sans-serif">🛍️</text>
-          <text x="260" y="376" text-anchor="middle" font-size="9" fill="#991b1b" font-family="Inter,sans-serif" font-weight="700">PlazaVea</text>
-          <text x="260" y="387" text-anchor="middle" font-size="8" fill="#64748b" font-family="Inter,sans-serif">Supermercado · 8 min</text>
+          <!-- MegaPlaza: NNW 330°, r=190 → (209, 57) -->
+          <circle cx="209" cy="57" r="14" fill="#059669"/>
+          <rect x="203" y="52" width="12" height="10" rx="2" fill="white" opacity="0.9"/>
+          <rect x="205" y="50" width="8" height="3" rx="1" fill="white" opacity="0.6"/>
+          <text x="209" y="32" text-anchor="middle" font-size="9" fill="#6ee7b7" font-family="Inter,sans-serif" font-weight="700">MegaPlaza</text>
+          <text x="209" y="43" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.45)" font-family="Inter,sans-serif">Lima Norte · 15 min</text>
 
-          <!-- POI: Tren Línea 1 (middle-left) -->
-          <circle cx="95" cy="207" r="16" fill="#7c3aed" opacity="0.9"/>
-          <text x="95" y="212" text-anchor="middle" font-size="13" fill="white" font-family="sans-serif">🚇</text>
-          <text x="95" y="235" text-anchor="middle" font-size="9" fill="#5b21b6" font-family="Inter,sans-serif" font-weight="700">Tren Línea 1</text>
-          <text x="95" y="246" text-anchor="middle" font-size="8" fill="#64748b" font-family="Inter,sans-serif">Est. Independencia</text>
+          <!-- ——— GYM (orange #fb923c) ——— -->
+          <!-- Smart Fit: NW 322°, r=145 → (214, 100) -->
+          <circle cx="214" cy="100" r="14" fill="#c2410c"/>
+          <rect x="208" y="95" width="12" height="10" rx="2" fill="white" opacity="0.9"/>
+          <line x1="214" y1="95" x2="214" y2="105" stroke="#c2410c" stroke-width="1.5"/>
+          <text x="130" y="95" text-anchor="start" font-size="9" fill="#fb923c" font-family="Inter,sans-serif" font-weight="700">Smart Fit</text>
+          <text x="130" y="106" text-anchor="start" font-size="8" fill="rgba(255,255,255,0.45)" font-family="Inter,sans-serif">Plaza Center · 10 min</text>
 
-          <!-- POI: MegaPlaza (middle-right) -->
-          <circle cx="540" cy="207" r="16" fill="#0ea5e9" opacity="0.9"/>
-          <text x="540" y="212" text-anchor="middle" font-size="13" fill="white" font-family="sans-serif">🏬</text>
-          <text x="540" y="235" text-anchor="middle" font-size="9" fill="#0369a1" font-family="Inter,sans-serif" font-weight="700">MegaPlaza</text>
-          <text x="540" y="246" text-anchor="middle" font-size="8" fill="#64748b" font-family="Inter,sans-serif">Lima Norte · 15 min</text>
+          <!-- ——— EDUCATION (amber #fbbf24) ——— -->
+          <!-- UNI: S 202°, r=185 → (233, 385) -->
+          <circle cx="233" cy="385" r="14" fill="#b45309"/>
+          <rect x="227" y="379" width="12" height="9" rx="2" fill="white" opacity="0.9"/>
+          <rect x="233" y="377" width="2" height="3" fill="white" opacity="0.6"/>
+          <text x="253" y="382" text-anchor="start" font-size="9" fill="#fcd34d" font-family="Inter,sans-serif" font-weight="700">UNI</text>
+          <text x="253" y="393" text-anchor="start" font-size="8" fill="rgba(255,255,255,0.45)" font-family="Inter,sans-serif">Univ. Ingeniería · 15 min</text>
 
-          <!-- Connector lines (dashed) from TM to POIs -->
-          <line x1="310" y1="185" x2="454" y2="76" stroke="#006D77" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.4"/>
-          <line x1="310" y1="185" x2="111" y2="76" stroke="#006D77" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.4"/>
-          <line x1="310" y1="185" x2="276" y2="76" stroke="#006D77" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.4"/>
-          <line x1="310" y1="229" x2="454" y2="332" stroke="#006D77" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.4"/>
-          <line x1="310" y1="229" x2="111" y2="332" stroke="#006D77" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.4"/>
-          <line x1="310" y1="229" x2="276" y2="332" stroke="#006D77" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.4"/>
-          <line x1="288" y1="207" x2="111" y2="207" stroke="#006D77" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.4"/>
-          <line x1="332" y1="207" x2="524" y2="207" stroke="#006D77" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.4"/>
+          <!-- Compass N -->
+          <text x="670" y="26" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.3)" font-family="Inter,sans-serif" font-weight="700">N</text>
+          <line x1="670" y1="30" x2="670" y2="44" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+          <polygon points="670,18 667,28 670,25 673,28" fill="rgba(255,255,255,0.4)"/>
 
-          <!-- Compass -->
-          <text x="608" y="30" text-anchor="middle" font-size="11" fill="#94a3b8" font-family="Inter,sans-serif" font-weight="700">N ↑</text>
+          <!-- Legend -->
+          <circle cx="30"  cy="420" r="5" fill="#4f46e5"/>
+          <text x="40" y="424" font-size="8.5" fill="rgba(255,255,255,0.5)" font-family="Inter,sans-serif">Transporte</text>
+          <circle cx="115" cy="420" r="5" fill="#059669"/>
+          <text x="125" y="424" font-size="8.5" fill="rgba(255,255,255,0.5)" font-family="Inter,sans-serif">Compras</text>
+          <circle cx="190" cy="420" r="5" fill="#c2410c"/>
+          <text x="200" y="424" font-size="8.5" fill="rgba(255,255,255,0.5)" font-family="Inter,sans-serif">Gimnasio</text>
+          <circle cx="260" cy="420" r="5" fill="#b45309"/>
+          <text x="270" y="424" font-size="8.5" fill="rgba(255,255,255,0.5)" font-family="Inter,sans-serif">Educación</text>
         </svg>
       </div>
 
-      <!-- POI CARDS GRID -->
+      <!-- POI CARDS -->
       <div class="zona-grid">
         <div class="zona-card">
-          <div class="zona-card-icon" style="background:#e0f2fe">🚌</div>
+          <div class="zona-card-icon zona-icon-blue">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          </div>
           <div class="zona-card-body">
             <h4>Transporte</h4>
             <ul>
               <li><span class="zona-dist">5 min</span> Metropolitano – Est. Naranjal</li>
               <li><span class="zona-dist">8 min</span> Tren Línea 1 – Independencia</li>
-              <li><span class="zona-dist">2 min</span> Combis y buses a toda Lima</li>
+              <li><span class="zona-dist">2 min</span> Combis a toda Lima</li>
               <li><span class="zona-dist">10 min</span> Gran Terminal Plaza Norte</li>
             </ul>
           </div>
         </div>
         <div class="zona-card">
-          <div class="zona-card-icon" style="background:#fef3c7">🛒</div>
+          <div class="zona-card-icon zona-icon-green">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          </div>
           <div class="zona-card-body">
             <h4>Supermercados</h4>
             <ul>
-              <li><span class="zona-dist">5 min</span> Wong – Plaza Norte</li>
+              <li><span class="zona-dist">5 min</span> Metro – Plaza Norte</li>
               <li><span class="zona-dist">8 min</span> PlazaVea – Plaza Center SMP</li>
               <li><span class="zona-dist">10 min</span> Makro (mayorista)</li>
               <li><span class="zona-dist">3 min</span> Mercados y bodegas locales</li>
@@ -650,28 +668,77 @@
           </div>
         </div>
         <div class="zona-card">
-          <div class="zona-card-icon" style="background:#dcfce7">💪</div>
+          <div class="zona-card-icon zona-icon-orange">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          </div>
           <div class="zona-card-body">
-            <h4>Gym & Entretenimiento</h4>
+            <h4>Gym & Ocio</h4>
             <ul>
               <li><span class="zona-dist">10 min</span> Smart Fit – Plaza Center SMP</li>
               <li><span class="zona-dist">5 min</span> Cineplanet – Plaza Norte</li>
-              <li><span class="zona-dist">15 min</span> Smart Fit – MegaPlaza Norte</li>
               <li><span class="zona-dist">5 min</span> Restaurantes y fast food</li>
+              <li><span class="zona-dist">15 min</span> MegaPlaza – Lima Norte</li>
             </ul>
           </div>
         </div>
         <div class="zona-card">
-          <div class="zona-card-icon" style="background:#fae8ff">🎓</div>
+          <div class="zona-card-icon zona-icon-amber">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          </div>
           <div class="zona-card-body">
             <h4>Educación & Salud</h4>
             <ul>
               <li><span class="zona-dist">15 min</span> UNI – Univ. de Ingeniería</li>
               <li><span class="zona-dist">10 min</span> SENATI Lima Norte</li>
-              <li><span class="zona-dist">5 min</span> Farmacias Inkafarma / Mifarma</li>
+              <li><span class="zona-dist">5 min</span> Inkafarma / Mifarma</li>
               <li><span class="zona-dist">10 min</span> Clínica San Pablo Norte</li>
             </ul>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FAQ ===================== -->
+  <section class="section faq-section" id="faq">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Preguntas frecuentes</span>
+        <h2 class="section-title">Todo lo que necesitas saber</h2>
+        <p class="section-sub">Si tienes alguna duda que no esté aquí, escríbenos por WhatsApp y te respondemos al toque.</p>
+      </div>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">¿Qué documentos necesito para alquilar?<span class="faq-icon"></span></button>
+          <div class="faq-a"><p>Solo tu DNI vigente y un mes de adelanto. No pedimos recibos de sueldo ni carta de trabajo. Ideal si trabajas de forma independiente.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">¿Cuánto es el depósito o garantía?<span class="faq-icon"></span></button>
+          <div class="faq-a"><p>Un mes de alquiler como garantía, que se devuelve al final del contrato si el cuarto está en buen estado.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">¿Los servicios están incluidos?<span class="faq-icon"></span></button>
+          <div class="faq-a"><p>Sí. Agua, luz, internet de alta velocidad y limpieza de áreas comunes están incluidos en el precio mensual. Sin cobros sorpresa.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">¿Cuál es el tiempo mínimo de estadía?<span class="faq-icon"></span></button>
+          <div class="faq-a"><p>El contrato mínimo es de 3 meses. También tenemos opciones por mes para quienes necesitan mayor flexibilidad.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">¿Las habitaciones vienen amobladas?<span class="faq-icon"></span></button>
+          <div class="faq-a"><p>Sí, todas las habitaciones incluyen cama, colchón, armario, escritorio y silla. Solo traes tus cosas personales.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">¿Se permiten visitas o invitados?<span class="faq-icon"></span></button>
+          <div class="faq-a"><p>Sí, puedes recibir visitas en las áreas comunes. Por respeto a los demás residentes, los horarios de visita son hasta las 10 pm.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">¿Hay estacionamiento disponible?<span class="faq-icon"></span></button>
+          <div class="faq-a"><p>No contamos con estacionamiento propio, pero hay playa de estacionamiento pública a 2 minutos de la residencia.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">¿Se permiten mascotas?<span class="faq-icon"></span></button>
+          <div class="faq-a"><p>Por el momento no aceptamos mascotas para garantizar la comodidad de todos los residentes.</p></div>
         </div>
       </div>
     </div>
