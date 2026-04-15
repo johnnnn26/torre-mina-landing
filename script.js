@@ -232,3 +232,86 @@ document.querySelectorAll('.faq-q').forEach(btn => {
     }
   });
 });
+
+
+/* -----------------------------------------------
+   LEAFLET MAP – ENTORNO
+----------------------------------------------- */
+(function () {
+  if (!document.getElementById('entornoMap')) return;
+
+  const map = L.map('entornoMap', { zoomControl: true, scrollWheelZoom: false })
+    .setView([-12.0084, -77.0578], 15);
+
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; <a href="https://carto.com/">CARTO</a>',
+    maxZoom: 19
+  }).addTo(map);
+
+  function makeIcon(color) {
+    return L.divIcon({
+      className: '',
+      html: `<div style="width:32px;height:32px;background:${color};border-radius:50% 50% 50% 0;transform:rotate(-45deg);box-shadow:0 2px 8px rgba(0,0,0,0.25);border:2px solid #fff"></div>`,
+      iconSize: [32, 32],
+      iconAnchor: [16, 32],
+      popupAnchor: [0, -34]
+    });
+  }
+
+  const COLORS = {
+    home:          '#006D77',
+    transporte:    '#4f46e5',
+    supermercados: '#059669',
+    salud:         '#e11d48',
+    educacion:     '#b45309',
+    ocio:          '#0284c7'
+  };
+
+  const pois = [
+    { cat:'transporte',    lat:-12.0127, lng:-77.0578, name:'Metropolitano', desc:'Est. Naranjal · 5 min a pie' },
+    { cat:'transporte',    lat:-12.0093, lng:-77.0488, name:'Tren Línea 1',  desc:'Est. Independencia · 8 min' },
+    { cat:'transporte',    lat:-12.0038, lng:-77.0565, name:'Gran Terminal', desc:'Plaza Norte · 5 min' },
+    { cat:'supermercados', lat:-12.0034, lng:-77.0562, name:'Metro',         desc:'Plaza Norte · 5 min a pie' },
+    { cat:'supermercados', lat:-12.0058, lng:-77.0645, name:'PlazaVea',      desc:'Plaza Center SMP · 8 min' },
+    { cat:'supermercados', lat:-12.0148, lng:-77.0623, name:'Makro',         desc:'Mayorista · 10 min' },
+    { cat:'salud',         lat:-12.0055, lng:-77.0640, name:'Smart Fit',     desc:'Plaza Center SMP · 10 min' },
+    { cat:'salud',         lat:-12.0040, lng:-77.0570, name:'Inkafarma',     desc:'Plaza Norte · 5 min' },
+    { cat:'salud',         lat:-12.0168, lng:-77.0528, name:'Clínica San Pablo', desc:'Lima Norte · 10 min' },
+    { cat:'educacion',     lat:-12.0178, lng:-77.0498, name:'UNI',           desc:'Univ. de Ingeniería · 15 min' },
+    { cat:'educacion',     lat:-12.0312, lng:-77.0625, name:'SENATI',        desc:'Lima Norte · 15 min' },
+    { cat:'ocio',          lat:-12.0032, lng:-77.0558, name:'Cineplanet',    desc:'Plaza Norte · 5 min' },
+    { cat:'ocio',          lat:-12.0027, lng:-77.0553, name:'MegaPlaza',     desc:'Lima Norte · 15 min en bus' },
+  ];
+
+  // Torre Mina marker (always visible)
+  const tmIcon = L.divIcon({
+    className: '',
+    html: `<div style="background:#006D77;color:#fff;padding:6px 12px;border-radius:20px;font-size:12px;font-weight:700;font-family:Inter,sans-serif;box-shadow:0 2px 12px rgba(0,109,119,0.4);white-space:nowrap;border:2px solid #fff">📍 Torre Mina</div>`,
+    iconAnchor: [55, 20],
+    popupAnchor: [0, -24]
+  });
+  L.marker([-12.0084, -77.0578], { icon: tmIcon }).addTo(map)
+    .bindPopup('<strong>Residencia Torre Mina</strong><br>Tu nueva casa en Lima Norte');
+
+  // POI markers
+  const markers = pois.map(p => {
+    const m = L.marker([p.lat, p.lng], { icon: makeIcon(COLORS[p.cat]) })
+      .bindPopup(`<strong>${p.name}</strong><br><span style="color:#666;font-size:13px">${p.desc}</span>`);
+    m._cat = p.cat;
+    m.addTo(map);
+    return m;
+  });
+
+  // Filter buttons
+  document.querySelectorAll('.mf-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.mf-btn').forEach(b => b.classList.remove('is-active'));
+      btn.classList.add('is-active');
+      const cat = btn.dataset.cat;
+      markers.forEach(m => {
+        if (cat === 'all' || m._cat === cat) m.addTo(map);
+        else map.removeLayer(m);
+      });
+    });
+  });
+})();

@@ -1348,13 +1348,36 @@ ul  { list-style: none; }
    ============================================== */
 .zona-section { background: var(--bg); }
 
-.croquis-wrap {
+.map-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.mf-btn {
+  padding: 8px 18px;
+  border-radius: var(--r-pill);
+  border: 1.5px solid var(--border);
+  background: var(--bg);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-2);
+  cursor: pointer;
+  transition: all var(--t);
+  font-family: var(--font);
+}
+.mf-btn:hover { border-color: var(--accent); color: var(--accent); }
+.mf-btn.is-active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+.entorno-map {
+  width: 100%;
+  height: 480px;
   border-radius: var(--r-xl);
   overflow: hidden;
   box-shadow: var(--sh-lg);
   margin-bottom: 36px;
+  z-index: 0;
 }
-.croquis-svg { width: 100%; height: auto; display: block; }
 
 .zona-grid {
   display: grid;
