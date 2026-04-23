@@ -12,8 +12,8 @@ const VAPI_PUBLIC_KEY = '3ff52480-cbc0-4273-bc6d-ce1a5786abd7';
 const ASSISTANT_CONFIG = {
   firstMessage: '¡Hola! Soy el asistente de voz de Torre Mina. ¿En qué puedo ayudarte?',
   model: {
-    provider: 'anthropic',
-    model: 'claude-3-haiku-20240307',
+    provider: 'openai',
+    model: 'gpt-4o-mini',
     maxTokens: 180,
     messages: [
       {
@@ -62,7 +62,7 @@ const label     = document.getElementById('vcallLabel');
 const mainBtn   = document.getElementById('vcallMainBtn');
 const muteBtn   = document.getElementById('vcallMuteBtn');
 
-if (!bubble) throw new Error('Voice widget: elementos no encontrados en el DOM');
+if (!bubble) { console.error('Voice widget: elementos no encontrados'); }
 
 // ── ESTADO ───────────────────────────────────────────────────────────────────
 let isOpen     = false;
@@ -156,14 +156,15 @@ vapi.on('error', function (err) {
   muteBtn.hidden = true;
   ring.classList.remove('is-speaking');
   headerDot.classList.remove('is-live');
-  setLabel('Error al conectar. Verifica tu conexión e inténtalo de nuevo.');
-  setHeaderStatus('Sin conexión');
+  var msg = (err && err.message) ? err.message : JSON.stringify(err);
+  setLabel('Error: ' + msg + '. Verifica tu conexión.');
+  setHeaderStatus('Error');
   setTimeout(function () {
     if (!callActive) {
       setLabel('Toca el botón para hablar con el asistente');
       setHeaderStatus('Lista para conectar');
     }
-  }, 5000);
+  }, 6000);
 });
 
 // ── HELPERS ──────────────────────────────────────────────────────────────────
