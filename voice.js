@@ -1,53 +1,7 @@
-// voice.js — Asistente de voz Residencia Torre Mina
+// voice.js — Asistente de voz Torre Mina · ElevenLabs Conversational AI
 (function () {
-  var VAPI_PUBLIC_KEY = '3ff52480-cbc0-4273-bc6d-ce1a5786abd7';
-
-  var SYSTEM_PROMPT = [
-    'Eres Camila, asesora de Residencia Torre Mina en Lima, Perú.',
-    'Hablas por teléfono con personas interesadas en alquilar una habitación.',
-    'Tono: cálido, profesional, natural — como una persona real, no un robot.',
-    'IMPORTANTE: respuestas cortas y conversacionales (máx 2 oraciones). Sin listas. Sin bullets.',
-    'Usa pausas naturales. Di "claro", "por supuesto", "con gusto" cuando corresponda.',
-    '',
-    'PRECIOS MENSUALES (todas con baño privado):',
-    '- Económica S/500, Estándar S/650, Premium S/750, Mini Apartamento desde S/1500.',
-    '',
-    'INCLUIDO: Agua, luz, WiFi, limpieza. AMOBLADAS: cama, colchón, armario, escritorio, silla.',
-    '',
-    'REQUISITOS: Solo DNI + 1 mes adelanto. Sin recibo de sueldo. Garantía: 1 mes.',
-    'CONTRATO: mínimo 3 meses (también mensual).',
-    'NORMAS: visitas hasta 10pm, sin mascotas, sin estacionamiento (playa pública a 2 min).',
-    '',
-    'UBICACIÓN: San Martín de Porres, Lima, cerca de Plaza Norte.',
-    'TRANSPORTE: 5 min Metropolitano, 8 min Tren Línea 1.',
-    '',
-    'AGENDAR: calendly.com/johnn-academic/visita-a-torre-mina o WhatsApp +51 933 589 691.',
-    'HORARIO DE VISITAS: lunes a sábado 9am–5pm.',
-    '',
-    'Si preguntan por disponibilidad o quieren reservar, dales el WhatsApp o Calendly.',
-    'No inventes información. Solo usa los datos de arriba.'
-  ].join('\n');
-
-  var ASSISTANT_CONFIG = {
-    name: 'Asistente Torre Mina',
-    firstMessage: '¡Hola! Soy el asistente de Torre Mina. ¿En qué puedo ayudarte?',
-    transcriber: {
-      provider: 'deepgram',
-      model: 'nova-2',
-      language: 'es'
-    },
-    model: {
-      provider: 'openai',
-      model: 'gpt-4o-mini',
-      maxTokens: 180,
-      messages: [{ role: 'system', content: SYSTEM_PROMPT }]
-    },
-    voice: {
-      provider: 'openai',
-      voiceId: 'nova',      // Voz femenina cálida — la misma que ChatGPT Voice Mode
-      speed: 1.0
-    }
-  };
+  var AGENT_ID   = 'agent_3101kpw9exmnfswth43a6anrqqee';
+  var EL_API_KEY = 'sk_b76f23a25585195a385bf2836f45e9b71a3626a896b51b3b';
 
   // ── DOM ──────────────────────────────────────────────────────────────────────
   var panel     = document.getElementById('vcallPanel');
@@ -62,10 +16,10 @@
 
   if (!panel || !toggleBtn) return;
 
-  var isOpen     = false;
-  var callActive = false;
-  var isMuted    = false;
-  var vapiInst   = null;
+  var isOpen       = false;
+  var callActive   = false;
+  var isMuted      = false;
+  var conversation = null;
 
   // ── PANEL OPEN / CLOSE ───────────────────────────────────────────────────────
   toggleBtn.addEventListener('click', function () { isOpen ? closePanel() : openPanel(); });
@@ -89,22 +43,36 @@
   mainBtn.addEventListener('click', function () { callActive ? endCall() : startCall(); });
 
   muteBtn.addEventListener('click', function () {
-    if (!vapiInst) return;
+    if (!conversation) return;
     isMuted = !isMuted;
-    vapiInst.setMuted(isMuted);
+    conversation.setMicMuted(isMuted);
     muteBtn.classList.toggle('is-muted', isMuted);
     muteBtn.setAttribute('aria-label', isMuted ? 'Activar micrófono' : 'Silenciar');
   });
 
   function startCall() {
     mainBtn.disabled = true;
-    setLabel('Cargando asistente de voz...');
-    setHeaderStatus('Cargando...');
+    setLabel('Conectando con Camila...');
+    setHeaderStatus('Conectando...');
 
-    getVapi()
-      .then(function (vapi) { vapi.start(ASSISTANT_CONFIG); })
+    import('https://esm.sh/@11labs/client')
+      .then(function (mod) {
+        var Conversation = mod.Conversation;
+        return Conversation.startSession({
+          agentId:       AGENT_ID,
+          authorization: EL_API_KEY,
+          onConnect:    onCallStart,
+          onDisconnect: onCallEnd,
+          onError:      onError,
+          onModeChange: function (data) {
+            if (data.mode === 'speaking') ring.classList.add('is-speaking');
+            else                         ring.classList.remove('is-speaking');
+          }
+        });
+      })
+      .then(function (conv) { conversation = conv; })
       .catch(function (err) {
-        console.error('Error iniciando llamada:', err);
+        console.error('ElevenLabs error:', err);
         mainBtn.disabled = false;
         setLabel('Error: ' + (err.message || 'No se pudo conectar. Intenta de nuevo.'));
         setHeaderStatus('Error');
@@ -113,29 +81,13 @@
   }
 
   function endCall() {
-    if (vapiInst) vapiInst.stop();
+    if (conversation) {
+      conversation.endSession();
+      conversation = null;
+    }
   }
 
-  // Carga Vapi una sola vez y reutiliza la instancia
-  function getVapi() {
-    if (vapiInst) return Promise.resolve(vapiInst);
-
-    return import('https://esm.sh/@vapi-ai/web')
-      .then(function (mod) {
-        var Vapi  = mod.default;
-        vapiInst  = new Vapi(VAPI_PUBLIC_KEY);
-
-        vapiInst.on('call-start',   onCallStart);
-        vapiInst.on('call-end',     onCallEnd);
-        vapiInst.on('speech-start', function () { ring.classList.add('is-speaking'); });
-        vapiInst.on('speech-end',   function () { ring.classList.remove('is-speaking'); });
-        vapiInst.on('error',        onError);
-
-        return vapiInst;
-      });
-  }
-
-  // ── VAPI EVENTS ──────────────────────────────────────────────────────────────
+  // ── EVENTOS ──────────────────────────────────────────────────────────────────
   function onCallStart() {
     callActive = true;
     mainBtn.disabled = false;
@@ -151,6 +103,7 @@
   function onCallEnd() {
     callActive = false;
     isMuted    = false;
+    conversation = null;
     mainBtn.disabled = false;
     mainBtn.classList.remove('is-active');
     mainBtn.setAttribute('aria-label', 'Iniciar llamada');
@@ -165,16 +118,15 @@
   }
 
   function onError(err) {
-    console.error('Vapi error:', err);
+    console.error('ElevenLabs error:', err);
     callActive = false;
+    conversation = null;
     mainBtn.disabled = false;
     mainBtn.classList.remove('is-active');
     muteBtn.hidden = true;
     ring.classList.remove('is-speaking');
     headerDot.classList.remove('is-live');
-    var msg = (err && (err.message || err.msg || err.error))
-      ? (err.message || err.msg || err.error)
-      : JSON.stringify(err);
+    var msg = (err && (err.message || err.msg)) ? (err.message || err.msg) : String(err);
     setLabel('Error: ' + msg);
     setHeaderStatus('Error');
     setTimeout(function () { if (!callActive) resetLabel(); }, 6000);
@@ -184,7 +136,7 @@
   function setLabel(text)        { if (label)    label.textContent = text; }
   function setHeaderStatus(text) { if (headerSt) headerSt.textContent = text; }
   function resetLabel() {
-    setLabel('Toca el botón para hablar con el asistente');
+    setLabel('Toca el botón para hablar con Camila');
     setHeaderStatus('Lista para conectar');
   }
 })();
