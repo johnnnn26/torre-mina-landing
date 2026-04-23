@@ -59,14 +59,13 @@
       .then(function (mod) {
         var Conversation = mod.Conversation;
         return Conversation.startSession({
-          agentId:       AGENT_ID,
-          authorization: EL_API_KEY,
+          agentId:      AGENT_ID,
           onConnect:    onCallStart,
           onDisconnect: onCallEnd,
           onError:      onError,
           onModeChange: function (data) {
             if (data.mode === 'speaking') ring.classList.add('is-speaking');
-            else                         ring.classList.remove('is-speaking');
+            else                          ring.classList.remove('is-speaking');
           }
         });
       })
@@ -117,8 +116,8 @@
     setTimeout(function () { if (!callActive) resetLabel(); }, 3500);
   }
 
-  function onError(err) {
-    console.error('ElevenLabs error:', err);
+  function onError(msg) {
+    console.error('ElevenLabs error:', msg);
     callActive = false;
     conversation = null;
     mainBtn.disabled = false;
@@ -126,8 +125,7 @@
     muteBtn.hidden = true;
     ring.classList.remove('is-speaking');
     headerDot.classList.remove('is-live');
-    var msg = (err && (err.message || err.msg)) ? (err.message || err.msg) : String(err);
-    setLabel('Error: ' + msg);
+    setLabel('Error: ' + (typeof msg === 'string' ? msg : JSON.stringify(msg)));
     setHeaderStatus('Error');
     setTimeout(function () { if (!callActive) resetLabel(); }, 6000);
   }
