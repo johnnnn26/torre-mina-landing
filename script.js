@@ -233,6 +233,386 @@ document.querySelectorAll('.faq-q').forEach(btn => {
 
 
 /* -----------------------------------------------
+   ROOM PLANNER
+----------------------------------------------- */
+(function () {
+  const canvas = document.getElementById('plannerCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  let cssW = 600, cssH = 440;
+  let roomW = 350, roomD = 380;
+  let items = [];
+  let selected = null;
+  let dragging = false;
+  let dragOffX = 0, dragOffY = 0;
+
+  const PAD = 46;
+  const COLORS = [
+    '#D4B896','#A8C8D8','#B4D4B0','#D4C4A4','#C4B0D4',
+    '#D4A4A0','#A0D4C4','#C8D4A4','#D4C8A8','#B0C4D8'
+  ];
+  let colorIdx = 0;
+
+  const PRESETS = [
+    { name: 'Cama 1 plaza',    w: 90,  d: 190, emoji: '🛏️' },
+    { name: 'Cama 1½ plazas', w: 120, d: 190, emoji: '🛏️' },
+    { name: 'Cama 2 plazas',  w: 140, d: 190, emoji: '🛏️' },
+    { name: 'Cama Queen',     w: 160, d: 200, emoji: '🛏️' },
+    { name: 'Cama King',      w: 200, d: 200, emoji: '🛏️' },
+    { name: 'Escritorio',     w: 120, d: 60,  emoji: '🖵️' },
+    { name: 'Armario doble',  w: 160, d: 60,  emoji: '🚪' },
+    { name: 'Mesa de noche',  w: 50,  d: 40,  emoji: '🗄️' },
+    { name: 'Silla',          w: 50,  d: 50,  emoji: '🪑' },
+    { name: 'Sofá 2p',   w: 150, d: 80,  emoji: '🛋️' },
+  ];
+
+  function getScale() {
+    return Math.min((cssW - PAD * 2) / roomW, (cssH - PAD * 2) / roomD);
+  }
+  function roomToCanvas(rx, ry) {
+    const s = getScale();
+    const ox = (cssW - roomW * s) / 2;
+    const oy = (cssH - roomD * s) / 2;
+    return [ox + rx * s, oy + ry * s];
+  }
+  function canvasToRoom(cx, cy) {
+    const s = getScale();
+    const ox = (cssW - roomW * s) / 2;
+    const oy = (cssH - roomD * s) / 2;
+    return [(cx - ox) / s, (cy - oy) / s];
+  }
+  function itemFits(item) {
+    const iw = item.rotated ? item.d : item.w;
+    const id = item.rotated ? item.w : item.d;
+    return item.x >= 0 && item.y >= 0 && item.x + iw <= roomW && item.y + id <= roomD;
+  }
+  function rRect(x, y, w, h, r) {
+    if (typeof ctx.roundRect === 'function') { ctx.roundRect(x, y, w, h, r); }
+    else { ctx.rect(x, y, w, h); }
+  }
+
+  function draw() {
+    const s = getScale();
+    const [ox, oy] = roomToCanvas(0, 0);
+    const rw = roomW * s;
+    const rd = roomD * s;
+
+    ctx.clearRect(0, 0, cssW, cssH);
+    ctx.fillStyle = '#F7F4F0';
+    ctx.fillRect(0, 0, cssW, cssH);
+
+    ctx.shadowColor = 'rgba(0,0,0,0.09)';
+    ctx.shadowBlur = 20;
+    ctx.fillStyle = '#FDFAF6';
+    ctx.beginPath(); rRect(ox, oy, rw, rd, 2); ctx.fill();
+    ctx.shadowBlur = 0; ctx.shadowColor = 'transparent';
+
+    ctx.strokeStyle = '#8C6D4F';
+    ctx.lineWidth = 2;
+    ctx.beginPath(); rRect(ox, oy, rw, rd, 2); ctx.stroke();
+
+    ctx.strokeStyle = 'rgba(140,109,79,0.07)';
+    ctx.lineWidth = 0.75;
+    const gs = 50 * s;
+    for (let x = ox; x <= ox + rw + 0.5; x += gs) {
+      ctx.beginPath(); ctx.moveTo(x, oy); ctx.lineTo(x, oy + rd); ctx.stroke();
+    }
+    for (let y = oy; y <= oy + rd + 0.5; y += gs) {
+      ctx.beginPath(); ctx.moveTo(ox, y); ctx.lineTo(ox + rw, y); ctx.stroke();
+    }
+
+    ctx.font = '11px Inter, -apple-system, sans-serif';
+    ctx.fillStyle = '#ADA099';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'bottom';
+    ctx.fillText(roomW + ' cm', ox + rw / 2, oy - 8);
+    ctx.save();
+    ctx.translate(ox - 12, oy + rd / 2);
+    ctx.rotate(-Math.PI / 2);
+    ctx.textBaseline = 'top';
+    ctx.fillText(roomD + ' cm', 0, 0);
+    ctx.restore();
+    ctx.textBaseline = 'alphabetic';
+
+    items.forEach(item => {
+      const iw = item.rotated ? item.d : item.w;
+      const id = item.rotated ? item.w : item.d;
+      const fits = itemFits(item);
+      const isSel = item === selected;
+      const [ix, iy] = roomToCanvas(item.x, item.y);
+      const cw = iw * s;
+      const ch = id * s;
+
+      ctx.shadowColor = isSel ? 'rgba(140,109,79,0.30)' : 'rgba(0,0,0,0.09)';
+      ctx.shadowBlur = isSel ? 10 : 5;
+      ctx.shadowOffsetY = isSel ? 0 : 2;
+      ctx.fillStyle = fits ? item.color : 'rgba(239,68,68,0.22)';
+      ctx.beginPath(); rRect(ix, iy, cw, ch, 3); ctx.fill();
+      ctx.shadowColor = 'transparent'; ctx.shadowBlur = 0; ctx.shadowOffsetY = 0;
+
+      ctx.strokeStyle = isSel ? '#8C6D4F' : (fits ? 'rgba(140,109,79,0.40)' : '#ef4444');
+      ctx.lineWidth = isSel ? 2 : 1.5;
+      ctx.beginPath(); rRect(ix, iy, cw, ch, 3); ctx.stroke();
+
+      const fs = Math.max(9, Math.min(13, cw / 7));
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      if (ch > fs * 2.8) {
+        ctx.font = '600 ' + fs + 'px Inter, -apple-system, sans-serif';
+        ctx.fillStyle = fits ? '#4A3728' : '#b91c1c';
+        ctx.fillText(item.name, ix + cw / 2, iy + ch / 2 - fs * 0.65, cw - 8);
+        ctx.font = (fs - 1) + 'px Inter, -apple-system, sans-serif';
+        ctx.fillStyle = fits ? '#6B5E52' : '#dc2626';
+        ctx.fillText(iw + '\xD7' + id + ' cm', ix + cw / 2, iy + ch / 2 + fs * 0.75, cw - 8);
+      } else if (ch > fs * 1.4) {
+        ctx.font = '600 ' + fs + 'px Inter, -apple-system, sans-serif';
+        ctx.fillStyle = fits ? '#4A3728' : '#b91c1c';
+        ctx.fillText(iw + '\xD7' + id, ix + cw / 2, iy + ch / 2, cw - 4);
+      }
+      ctx.textBaseline = 'alphabetic';
+    });
+  }
+
+  function resize() {
+    const dpr = window.devicePixelRatio || 1;
+    const w = canvas.parentElement.clientWidth;
+    const h = Math.min(Math.round(w * 0.65), 500);
+    cssW = w; cssH = h;
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+    canvas.style.width = w + 'px';
+    canvas.style.height = h + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    draw();
+  }
+  new ResizeObserver(resize).observe(canvas.parentElement);
+  resize();
+
+  document.getElementById('roomW').addEventListener('input', function () {
+    roomW = Math.max(150, +this.value || 350); draw();
+  });
+  document.getElementById('roomD').addEventListener('input', function () {
+    roomD = Math.max(150, +this.value || 380); draw();
+  });
+  document.querySelectorAll('.preset-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.preset-btn').forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      roomW = +btn.dataset.w;
+      roomD = +btn.dataset.d;
+      document.getElementById('roomW').value = roomW;
+      document.getElementById('roomD').value = roomD;
+      draw();
+    });
+  });
+
+  var furGrid = document.getElementById('furnitureGrid');
+  if (furGrid) {
+    PRESETS.forEach(function (p) {
+      var btn = document.createElement('button');
+      btn.className = 'fur-btn';
+      btn.title = p.name + ' – ' + p.w + '\xD7' + p.d + ' cm';
+
+      var emojiSpan = document.createElement('span');
+      emojiSpan.className = 'fur-emoji';
+      emojiSpan.textContent = p.emoji;
+
+      var info = document.createElement('span');
+      info.className = 'fur-info';
+
+      var nameSpan = document.createElement('span');
+      nameSpan.className = 'fur-name';
+      nameSpan.textContent = p.name;
+
+      var sizeSpan = document.createElement('span');
+      sizeSpan.className = 'fur-size';
+      sizeSpan.textContent = p.w + '\xD7' + p.d + ' cm';
+
+      info.appendChild(nameSpan);
+      info.appendChild(sizeSpan);
+      btn.appendChild(emojiSpan);
+      btn.appendChild(info);
+      btn.addEventListener('click', function () { addFurniture(p.name, p.w, p.d); });
+      furGrid.appendChild(btn);
+    });
+  }
+
+  function addFurniture(name, w, d) {
+    var offset = (items.length % 6) * 15;
+    var item = {
+      id: Date.now() + Math.random(),
+      name: name, w: w, d: d,
+      x: Math.min(offset + 5, Math.max(0, roomW - w - 5)),
+      y: Math.min(offset + 5, Math.max(0, roomD - d - 5)),
+      rotated: false,
+      color: COLORS[colorIdx++ % COLORS.length]
+    };
+    items.push(item);
+    selected = item;
+    renderItems();
+    draw();
+  }
+
+  var addCustomBtn = document.getElementById('addCustomFurniture');
+  if (addCustomBtn) {
+    addCustomBtn.addEventListener('click', function () {
+      var name = (document.getElementById('customFurName').value.trim()) || 'Mueble';
+      var w = +document.getElementById('customFurW').value || 100;
+      var d = +document.getElementById('customFurD').value || 60;
+      if (w > 0 && d > 0) addFurniture(name, w, d);
+    });
+  }
+
+  function renderItems() {
+    var wrap = document.getElementById('plannerItemsWrap');
+    var list = document.getElementById('plannerItemsList');
+    if (!wrap || !list) return;
+    wrap.style.display = items.length ? 'block' : 'none';
+    while (list.firstChild) list.removeChild(list.firstChild);
+
+    items.forEach(function (item) {
+      var iw = item.rotated ? item.d : item.w;
+      var id = item.rotated ? item.w : item.d;
+      var fits = itemFits(item);
+      var isSel = item === selected;
+
+      var row = document.createElement('div');
+      row.className = 'item-row' + (isSel ? ' item-row--sel' : '');
+
+      var dot = document.createElement('span');
+      dot.className = 'item-dot';
+      dot.style.background = item.color;
+
+      var lbl = document.createElement('span');
+      lbl.className = 'item-label';
+      lbl.textContent = item.name;
+      var sm = document.createElement('small');
+      sm.textContent = iw + '\xD7' + id + ' cm';
+      lbl.appendChild(sm);
+
+      var status = document.createElement('span');
+      status.className = 'item-status ' + (fits ? 'fit-ok' : 'fit-no');
+      status.textContent = fits ? '✓' : '✗ No';
+
+      var btnRot = document.createElement('button');
+      btnRot.className = 'item-act';
+      btnRot.dataset.act = 'rot';
+      btnRot.dataset.id = String(item.id);
+      btnRot.title = 'Rotar 90\xB0';
+      btnRot.setAttribute('aria-label', 'Rotar');
+      btnRot.textContent = '↻';
+
+      var btnDel = document.createElement('button');
+      btnDel.className = 'item-act';
+      btnDel.dataset.act = 'del';
+      btnDel.dataset.id = String(item.id);
+      btnDel.title = 'Eliminar';
+      btnDel.setAttribute('aria-label', 'Eliminar');
+      btnDel.textContent = '\xD7';
+
+      row.appendChild(dot);
+      row.appendChild(lbl);
+      row.appendChild(status);
+      row.appendChild(btnRot);
+      row.appendChild(btnDel);
+
+      row.addEventListener('click', function (e) {
+        if (e.target.closest('.item-act')) return;
+        selected = item;
+        draw(); renderItems();
+      });
+      list.appendChild(row);
+    });
+
+    list.querySelectorAll('.item-act').forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var id = +btn.dataset.id;
+        var item = items.find(function (i) { return i.id === id; });
+        if (!item) return;
+        if (btn.dataset.act === 'rot') {
+          item.rotated = !item.rotated;
+        } else {
+          items = items.filter(function (i) { return i.id !== id; });
+          if (selected && selected.id === id) selected = null;
+        }
+        draw(); renderItems();
+      });
+    });
+  }
+
+  function getPos(e) {
+    var rect = canvas.getBoundingClientRect();
+    var src = (e.touches && e.touches[0]) || e;
+    return { x: src.clientX - rect.left, y: src.clientY - rect.top };
+  }
+  function hitTest(cx, cy) {
+    var s = getScale();
+    for (var i = items.length - 1; i >= 0; i--) {
+      var item = items[i];
+      var iw = item.rotated ? item.d : item.w;
+      var id = item.rotated ? item.w : item.d;
+      var ref = roomToCanvas(item.x, item.y);
+      var ix = ref[0], iy = ref[1];
+      if (cx >= ix && cx <= ix + iw * s && cy >= iy && cy <= iy + id * s) return item;
+    }
+    return null;
+  }
+
+  function onDown(e) {
+    var pos = getPos(e);
+    var hit = hitTest(pos.x, pos.y);
+    selected = hit;
+    if (hit) {
+      dragging = true;
+      var ref = roomToCanvas(hit.x, hit.y);
+      dragOffX = pos.x - ref[0];
+      dragOffY = pos.y - ref[1];
+      items.splice(items.indexOf(hit), 1);
+      items.push(hit);
+    }
+    draw(); renderItems();
+  }
+  function onMove(e) {
+    if (!dragging || !selected) return;
+    if (e.cancelable) e.preventDefault();
+    var pos = getPos(e);
+    var ref = canvasToRoom(pos.x - dragOffX, pos.y - dragOffY);
+    selected.x = ref[0];
+    selected.y = ref[1];
+    draw();
+  }
+  function onUp() {
+    if (dragging && selected) renderItems();
+    dragging = false;
+  }
+
+  canvas.addEventListener('mousedown', onDown);
+  canvas.addEventListener('mousemove', onMove);
+  canvas.addEventListener('mouseup', onUp);
+  canvas.addEventListener('mouseleave', onUp);
+  canvas.addEventListener('touchstart', onDown, { passive: true });
+  canvas.addEventListener('touchmove', onMove, { passive: false });
+  canvas.addEventListener('touchend', onUp);
+
+  document.addEventListener('keydown', function (e) {
+    if (document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA') return;
+    if (!selected) return;
+    if (e.key === 'r' || e.key === 'R') {
+      selected.rotated = !selected.rotated;
+      draw(); renderItems();
+    }
+    if (e.key === 'Delete' || e.key === 'Backspace') {
+      items = items.filter(function (i) { return i !== selected; });
+      selected = null;
+      draw(); renderItems();
+    }
+  });
+})();
+
+
+/* -----------------------------------------------
    LEAFLET MAP – ENTORNO
 ----------------------------------------------- */
 (function () {
