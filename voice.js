@@ -117,7 +117,7 @@
   function getVapi() {
     if (vapiInst) return Promise.resolve(vapiInst);
 
-    return import('https://cdn.jsdelivr.net/npm/@vapi-ai/web@latest/+esm')
+    return import('https://esm.sh/@vapi-ai/web')
       .then(function (mod) {
         var Vapi  = mod.default;
         vapiInst  = new Vapi(VAPI_PUBLIC_KEY);
