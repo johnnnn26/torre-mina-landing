@@ -669,15 +669,15 @@ document.querySelectorAll('.faq-q').forEach(btn => {
     { cat:'ocio',          lat:-12.0027, lng:-77.0553, name:'MegaPlaza',     desc:'Lima Norte · 15 min en bus' },
   ];
 
-  // Torre Mina marker (always visible)
+  // Séptimo marker (always visible)
   const tmIcon = L.divIcon({
     className: '',
-    html: `<div style="background:#006D77;color:#fff;padding:6px 12px;border-radius:20px;font-size:12px;font-weight:700;font-family:Inter,sans-serif;box-shadow:0 2px 12px rgba(0,109,119,0.4);white-space:nowrap;border:2px solid #fff">📍 Torre Mina</div>`,
+    html: `<div style="background:#006D77;color:#fff;padding:6px 12px;border-radius:20px;font-size:12px;font-weight:700;font-family:Inter,sans-serif;box-shadow:0 2px 12px rgba(0,109,119,0.4);white-space:nowrap;border:2px solid #fff">📍 Séptimo</div>`,
     iconAnchor: [55, 20],
     popupAnchor: [0, -24]
   });
   L.marker([-12.0084, -77.0578], { icon: tmIcon }).addTo(map)
-    .bindPopup('<strong>Residencia Torre Mina</strong><br>Tu nueva casa en Lima Norte');
+    .bindPopup('<strong>Residencia Séptimo</strong><br>Tu nueva casa en Lima Norte');
 
   // POI markers
   const markers = pois.map(p => {
